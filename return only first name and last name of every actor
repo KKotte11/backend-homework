@@ -1,0 +1,15 @@
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/actors")
+public class ActorController {
+
+    @Autowired
+    private ActorService actorService;
+
+    @GetMapping("/names")
+    public ResponseEntity<List<ActorNameDTO>> getActorNames() {
+        List<ActorNameDTO> actorNames = actorService.getActorNames();
+        return ResponseEntity.ok(actorNames);
+    }
+}
